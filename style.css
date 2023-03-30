@@ -1,0 +1,84 @@
+:root {
+	--dialog-color: #0081d7;
+}
+
+.dialogs-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 10px;
+	position: relative;
+	width: 100%;
+	max-width: 700px;
+	margin: 0 auto;
+}
+
+/* Avatar */
+
+.avatar:hover {
+	cursor: pointer;
+}
+
+/* Dialog */
+
+.dialog {
+	position: absolute;
+	opacity: 0;
+	width: 100%;
+	max-width: 400px;
+	padding: 20px;
+	border-radius: 10px;
+	color: #ffffff;
+	background-color: var(--dialog-color);
+	transition: all 1s ease-out;
+}
+
+.dialog:nth-child(odd) {
+	transform: translateX(-500px);
+}
+
+.dialog:nth-child(even) {
+	transform: translateX(500px);
+}
+
+/* Dialog (visible) */
+
+.dialog.active {
+	opacity: 1;
+}
+
+.dialog.active:nth-child(odd) {
+	transform: translateX(-300px);
+}
+
+.dialog.active:nth-child(even) {
+	transform: translateX(300px);
+}
+
+/* Dialog arrow */
+
+.dialog::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	border-top: 10px solid transparent;
+	border-right: 15px solid var(--dialog-color);
+	border-bottom: 10px solid transparent;
+}
+
+.dialog:nth-child(odd)::after {
+	right: -15px;
+	transform: scaleX(-1);
+}
+
+.dialog:nth-child(even)::after {
+	left: -15px;
+}
+
+/* Display active dialog / dialogs number */
+
+.dialog-state {
+	color: var(--dialog-color);
+	font-weight: bold;
+}
